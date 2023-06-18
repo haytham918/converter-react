@@ -1,18 +1,18 @@
 import React from 'react';
 import './NavBar.css'
-
+import { Link } from 'react-router-dom';
 const NavBar = () => {  return (
     <nav className='converter'>
-     <a href='/' className='converter-name'>Converter</a>
+     <Link to='/' className='converter-name'>Converter</Link>
       <ul>
         <li>
-        <a href='/units' className='section'>Units</a>
+        <Link to='/units' className='section'>Units</Link>
         </li>
         <li>
-        <a href='/currency' className='section'>Currency</a>
+        <Link to='/currency' className='section'>Currency</Link>
         </li>
         <li>
-        <a href='/time' className='section'>Time</a>
+        <Link to='/time' className='section'>Time</Link>
         </li>
       </ul>
       </nav>
