@@ -238,13 +238,12 @@ const Units = () => {
 
   const [kind, setKind] = useState(null);
 
-  const [before, setBefore] = useState('');
+  const [before, setBefore] = useState(null);
 
   const kindHandler = (e) => {
     setBefore('');
     setKind(e.value);
   };
-
     
   return (
     <>
