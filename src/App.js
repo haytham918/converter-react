@@ -1,13 +1,17 @@
 import logo from './logo.svg';
-import Units from './Units';
+import Units from './pages/Units';
 import './App.css';
 import NavBar from './NavBar';
+import Currency from './pages/Currency';
+import 
 
 const  App = () => {
   return (
     <>
     <NavBar />
-    <h1>Shit</h1>
+    <div className = 'page-container'>
+     
+    </div>
     </>
    
   );
