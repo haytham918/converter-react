@@ -1,4 +1,4 @@
-
+import './Units.css'
 const Length = {
   "Nanometer": 1,
   "Micrometer": 1000,
@@ -174,6 +174,9 @@ const units_kind = {
     "Frequency": Frequency
 }
 
+const kinds_name = ["Area", "Digital_Storage", "Fuel_Economy", "Length", "Mass", "Time", "Speed", "Volume", "Data_Transfer_Rate", "Energy",
+"Pressure", "Plane_Angle", "Temperature", "Frequency"];
+
 const Units = () => {
 
   const converter = (the_dictionary, value_before, before, after) => {
@@ -244,8 +247,23 @@ const Units = () => {
     conversion = {"formula": formula, "value_after": value_after}
     return conversion;
   }
+
+  let kinds = document.getElementById('kinds');
+  
   return(
-        <h1>Units</h1>
+      <>
+        <h1 className = 'header'>Unit Conversion</h1>
+        <h3 className = 'description'>Conversion Between Different Measurement Units</h3>
+
+        <div className = 'unit-container'>
+        <div className= 'kind-container'>
+        <select id='kinds'>
+          <option value='select' id={0}><p className='prompt-select'>-- Select a unit you want to convert -- </p></option>
+          {kinds_name.map((kind, index) => <option value={kind} id={index + 1}>{kind}</option>)}
+        </select>
+        </div>
+        </div>
+        </>
   )
 };
 
