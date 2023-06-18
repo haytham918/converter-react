@@ -263,18 +263,21 @@ const Units = () => {
 
         <div className = 'unit-container'>
         <div className= 'kind-container'>
-          <h4>Select Measurement Kind</h4>
+          <h4 className= 'kind-text'>Select Measurement</h4>
+          <div className='kind-dropdown'>
         <Select options={units_kind} onChange={kindHandler} styles={{
     control: (baseStyles, state) => ({
       ...baseStyles,
       borderColor: 'green',
       borderRadius: '0.5rem',
-      fontSize: '1.5rem',
+      fontSize: '120%',
       textAlign: 'center',
       fontWeight: 900,
+      fontFamily: 'Verdana'
 
     }),
   }}/>
+  </div>
         </div>
         </div>
         </>
