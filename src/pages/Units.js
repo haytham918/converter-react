@@ -1,3 +1,5 @@
+import { useState } from 'react'
+import Select from 'react-select'
 import './Units.css'
 const Length = {
   "Nanometer": 1,
@@ -157,22 +159,22 @@ const Digital_Storage = {
   "Pebibyte": 9.007 * (10**15)
 }
 
-const units_kind = {
-    "Area": Area,
-    "Digital_Storage": Digital_Storage,
-    "Fuel_Economy": Fuel_Economy,
-    "Length": Length,
-    "Mass": Mass,
-    "Time": Time,
-    "Speed": Speed,
-    "Volume": Volume,
-    "Data_Transfer_Rate": Data_Transfer_Rate,
-    "Energy": Energy,
-    "Pressure": Pressure,
-    "Plane_Angle": Plane_Angle,
-    "Temperature": Temperature,
-    "Frequency": Frequency
-}
+const units_kind = [
+   {label: "Area", value: Area},
+   {label: "Digital_Storage", value: Digital_Storage},
+   {label: "Fuel_Economy", value: Fuel_Economy},
+  {label:  "Length", value: Length},
+  {label:  "Mass", value : Mass},
+  {label:  "Time", value: Time},
+  {label:  "Speed", value: Speed},
+  {label:  "Volume", value: Volume},
+  {label:  "Data_Transfer_Rate", value: Data_Transfer_Rate},
+  {label:  "Energy", value: Energy},
+  {label:  "Pressure", value: Pressure},
+  {label:  "Plane_Angle", value: Plane_Angle},
+  {label:  "Temperature", value: Temperature},
+  {label:  "Frequency", value: Frequency}
+]
 
 const kinds_name = ["Area", "Digital_Storage", "Fuel_Economy", "Length", "Mass", "Time", "Speed", "Volume", "Data_Transfer_Rate", "Energy",
 "Pressure", "Plane_Angle", "Temperature", "Frequency"];
@@ -248,19 +250,31 @@ const Units = () => {
     return conversion;
   }
 
-  let kinds = document.getElementById('kinds');
+  const [kind, setKind] = useState(null);
+
+  const kindHandler = (e) => {
+    console.log(e);
+  }
   
   return(
       <>
         <h1 className = 'header'>Unit Conversion</h1>
-        <h3 className = 'description'>Conversion Between Different Measurement Units</h3>
+        <h2 className = 'description'>Conversion Between Different Measurement Units</h2>
 
         <div className = 'unit-container'>
         <div className= 'kind-container'>
-        <select id='kinds'>
-          <option value='select' id={0}><p className='prompt-select'>-- Select a unit you want to convert -- </p></option>
-          {kinds_name.map((kind, index) => <option value={kind} id={index + 1}>{kind}</option>)}
-        </select>
+          <h4>Select Measurement Kind</h4>
+        <Select options={units_kind} onChange={kindHandler} styles={{
+    control: (baseStyles, state) => ({
+      ...baseStyles,
+      borderColor: 'green',
+      borderRadius: '0.5rem',
+      fontSize: '1.5rem',
+      textAlign: 'center',
+      fontWeight: 900,
+
+    }),
+  }}/>
         </div>
         </div>
         </>
