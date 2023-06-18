@@ -238,10 +238,14 @@ const Units = () => {
 
   const [kind, setKind] = useState(null);
 
+  const [before, setBefore] = useState('');
+
   const kindHandler = (e) => {
+    setBefore('');
     setKind(e.value);
   };
 
+    
   return (
     <>
       <h1 className="header">Unit Conversion</h1>
@@ -277,7 +281,9 @@ const Units = () => {
           <div className="kind-dropdown">
             <Select
               options={kind}
-              onChange={kindHandler}
+              isDisabled={kind === null}
+              value={before}
+              onChange={setBefore}
               styles={{
                 control: (baseStyles, state) => ({
                   ...baseStyles,
