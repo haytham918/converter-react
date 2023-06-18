@@ -157,11 +157,95 @@ const Digital_Storage = {
   "Pebibyte": 9.007 * (10**15)
 }
 
+const units_kind = {
+    "Area": Area,
+    "Digital_Storage": Digital_Storage,
+    "Fuel_Economy": Fuel_Economy,
+    "Length": Length,
+    "Mass": Mass,
+    "Time": Time,
+    "Speed": Speed,
+    "Volume": Volume,
+    "Data_Transfer_Rate": Data_Transfer_Rate,
+    "Energy": Energy,
+    "Pressure": Pressure,
+    "Plane_Angle": Plane_Angle,
+    "Temperature": Temperature,
+    "Frequency": Frequency
+}
+
 const Units = () => {
+
+  const converter = (the_dictionary, value_before, before, after) => {
+    let formula, value_after, conversion;
+    if(before === "Liter per 100 kilometers"){
+        formula = `${282.481/the_dictionary[after]}/x`;
+        value_after = the_dictionary[before] / the_dictionary[
+            after] / value_before
+        conversion = {"formula": formula, "value_after": value_after}
+    }
+    else if(after === "Liter per 100 kilometers")
+    {
+        formula = `${282.481/the_dictionary[before]}/x`;
+        value_after = the_dictionary[after] / the_dictionary[
+            before] / value_before
+        conversion = {"formula": formula, "value_after": value_after}
+    }
+    else{
+        formula = the_dictionary[before] / the_dictionary[after]
+        value_after = formula * value_before
+        conversion = {"formula": formula, "value_after": value_after}
+    }
+    return conversion;
+  }
+
+  const temperature = (value_before, before, after) => {
+    let formula, value_after, conversion;
+    if(before === "Celsius"){
+
+    
+        if(after === "Kelvin"){
+          formula = "x + 273.15"
+          value_after = value_before + 273.15
+
+        }
+        else{
+            formula = "x*(1.8) + 32"
+            value_after = value_before * (1.8) + 32
+        }
+    }
+    else if(before === "Kelvin"){
+
+      if(after === "Celsius"){
+
+        formula = "x - 273.15"
+        value_after = value_before - 273.15
+      }
+      else{
+
+        formula = "(x-273.15) * (1.8) + 32"
+        value_after = (value_before - 273.15) * (1.8) + 32
+      }
+    }
+    else if(before === "Fahrenheit"){
+
+      if(after === "Celsius")
+      {
+
+        formula = "(x-32) * 5/9 "
+        value_after = (value_before - 32) * 5 / 9
+      }
+      else{
+
+        formula = "(x-32) * 5/9 + 273.15"
+        value_after = (value_before - 32) * 5 / 9 + 273.15
+      }
+    }
+    conversion = {"formula": formula, "value_after": value_after}
+    return conversion;
+  }
   return(
-      <div>
         <h1>Units</h1>
-      </div>
   )
 };
 
