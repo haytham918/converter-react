@@ -276,7 +276,7 @@ const Units = () => {
           <input  className='value-enter' placeholder="Value"/>
           <div className="kind-dropdown">
             <Select
-              options={Time}
+              options={kind}
               onChange={kindHandler}
               styles={{
                 control: (baseStyles, state) => ({

@@ -7,8 +7,10 @@ import { Routes, Route } from 'react-router-dom';
 
 const  App = () => {
   return (
-    <>
-    <NavBar />
+    <div className='overall'>
+      <div className='top-bar'>
+    <NavBar className='top-bar'/>
+    </div>
     <div className = 'page-container'>
     <Routes>
       <Route path='/' Component={Units}/>
@@ -17,7 +19,7 @@ const  App = () => {
       <Route path='/time' Component={Time}/>
     </Routes>
     </div>
-    </>
+    </div>
    
   );
 }
