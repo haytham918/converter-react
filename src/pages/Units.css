@@ -13,7 +13,11 @@
 .kind-container{
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 .unit-container{
@@ -31,4 +35,30 @@
   width: 35%;
   font-family: Verdana;
   
+}
+
+.original-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.input-container {
+  width: 15%;
+  height: 100%;
+}
+
+.value-enter {
+  width: 25%;
+  height: 100%;
+  text-align: center;
+  font-size: 80%;
+  font-family: Verdana;
+  border: solid;
+  border-radius: 0.8rem;
+  border-width: 0.15rem;
 }

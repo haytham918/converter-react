@@ -239,14 +239,14 @@ const Units = () => {
   const [kind, setKind] = useState(null);
 
   const kindHandler = (e) => {
-    console.log(e);
+    setKind(e.value);
   };
 
   return (
     <>
       <h1 className="header">Unit Conversion</h1>
       <h2 className="description">
-        Conversion Between Different Measurement Units
+        Conversion Between Measurement Units
       </h2>
 
       <div className="unit-container">
@@ -263,7 +263,29 @@ const Units = () => {
                   borderRadius: "0.5rem",
                   fontSize: "120%",
                   textAlign: "center",
-                  fontWeight: 900,
+                  fontWeight: 'bold',
+                  fontFamily: "Verdana",
+                }),
+              }}
+            />
+          </div>
+        </div>
+        <div className = 'original-container'>
+          <h4>From: </h4>
+        
+          <input  className='value-enter' placeholder="Value"/>
+          <div className="kind-dropdown">
+            <Select
+              options={Time}
+              onChange={kindHandler}
+              styles={{
+                control: (baseStyles, state) => ({
+                  ...baseStyles,
+                  borderColor: "green",
+                  borderRadius: "0.5rem",
+                  fontSize: "120%",
+                  textAlign: "center",
+                  fontWeight: 'bold',
                   fontFamily: "Verdana",
                 }),
               }}
