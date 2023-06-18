@@ -1,40 +1,44 @@
-
 .converter {
-  background-color: #0056D2;
+  background-color: #0056d2;
   color: white;
   display: flex;
   justify-content: space-around;
   align-items: stretch;
-  gap: 10em;
-  padding: 1rem 1rem;
+  gap: 12vw;
+  padding: 0 2vw;
+ 
 }
 
-.converter-name{
-  font-size: 2em;
+.converter-name {
+  font-size: 3vw;
+  font-weight: bold;
 }
 
-.converter ul{
+.converter ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
-  gap: 3rem;
+  gap: 12%;
 }
 
-.converter a{
-  color:inherit;
+.converter a {
+  color: inherit;
   text-decoration: none;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0.25rem;
+  padding: 0.25vw;
 }
 
-.converter li:active{
+.converter li:hover {
   background-color: violet;
 }
 
-.converter li:hover{
-  background-color: #555;
+
+
+.section {
+  font-size: 2.5vw;
+  font-weight: bold;
 }

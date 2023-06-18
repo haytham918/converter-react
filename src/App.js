@@ -1,10 +1,15 @@
 import logo from './logo.svg';
 import Units from './Units';
 import './App.css';
+import NavBar from './NavBar';
 
-function App() {
+const  App = () => {
   return (
-   <Units />
+    <>
+    <NavBar />
+    <h1>Shit</h1>
+    </>
+   
   );
 }
 

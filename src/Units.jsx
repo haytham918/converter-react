@@ -160,7 +160,7 @@ const Digital_Storage = {
 const Units = () => {
   return(
       <div>
-        <p>Units</p>
+        <h1>Units</h1>
       </div>
   )
 };
