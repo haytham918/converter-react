@@ -250,7 +250,7 @@ const Units = () => {
   };
 
   let value_after = 2;
-  
+  let ratio = 8;
   return (
     <>
       <h1 className="header">Unit Conversion</h1>
@@ -329,6 +329,13 @@ const Units = () => {
                 }),
               }}
             />
+          </div>
+        </div>
+
+        <div className='ratio-container'>
+          <h4>Ratio: </h4>
+          <div className="formula-container">
+          <p className = 'formula-text'>{ratio}</p>
           </div>
         </div>
       </div>

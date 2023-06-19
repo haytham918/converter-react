@@ -23,9 +23,12 @@
 
 .unit-container{
   width: 80%;
+  height: 70%;
   border-radius: 0.5rem;
   background-color: powderblue;
   box-shadow: 0rem 0.2rem 0.8rem rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
 }
 
 .kind-dropdown {
@@ -59,7 +62,7 @@
 
 .value-enter {
   width: 25%;
-  height: 100%;
+  height: 70%;
   text-align: center;
   font-size: 80%;
   font-family: Verdana;
@@ -118,4 +121,33 @@
   height: 8%;
   background: transparent;
   margin-bottom: 0.5rem;
+}
+
+
+.formula-text{
+  font-size: 80%;
+  font-weight: bold;
+}
+
+.ratio-container{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 30%;
+  margin-top: 2rem;
+  
+  margin-left: 1rem;
+  margin-right: 1rem;
+ 
+}
+
+.formula-container{
+  width: 25%;
+  border: dashed;
+  border-radius: 0.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: snow;
+  box-shadow: 0.2rem -0.2rem grey;
 }
