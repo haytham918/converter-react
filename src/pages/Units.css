@@ -18,6 +18,7 @@
   margin-bottom: 1rem;
   margin-left: 1rem;
   margin-right: 1rem;
+  box-shadow: 0rem 0.15rem aliceblue;
 }
 
 .unit-container{
@@ -45,6 +46,7 @@
   margin-bottom: 1rem;
   margin-left: 1rem;
   margin-right: 1rem;
+  box-shadow: 0rem 0.15rem aliceblue;
 }
 
 .input-container {
@@ -80,4 +82,34 @@
   margin-bottom: 1rem;
   margin-left: 1rem;
   margin-right: 1rem;
+}
+
+.to-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  box-shadow: 0rem 0.15rem aliceblue;
+}
+
+.result-container{
+  width: 30%;
+  border: solid;
+  border-radius: 0.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: darkcyan;
+  color: rgb(239, 139, 8);
+  box-shadow: 0.2rem -0.2rem aquamarine;
+  
+}
+
+.result-text{
+  font-size: 80%;
+  font-weight: bold;
+  color: white;
 }

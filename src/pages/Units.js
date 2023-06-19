@@ -248,6 +248,8 @@ const Units = () => {
     setAfter(null);
     setKind(e.value);
   };
+
+  let value_after = 2;
   
   return (
     <>
@@ -303,6 +305,33 @@ const Units = () => {
         </div>
         <div className="arrow-container">
         <img src={arrow} alt='Arrow' className='arrow'/>
+        </div>
+
+
+        <div className="to-container">
+          <h4>To: </h4>
+          <div className = 'result-container'>
+            <p className = 'result-text'>{after === null ? 'Result' : value_after}</p>
+          </div>
+          <div className="kind-dropdown">
+            <Select
+              options={kind}
+              isDisabled={kind === null}
+              value={after}
+              onChange={setAfter}
+              styles={{
+                control: (baseStyles, state) => ({
+                  ...baseStyles,
+                  borderColor: "green",
+                  borderRadius: "0.5rem",
+                  fontSize: "120%",
+                  textAlign: "center",
+                  fontWeight: 'bold',
+                  fontFamily: "Verdana",
+                }),
+              }}
+            />
+          </div>
         </div>
       </div>
     </>
