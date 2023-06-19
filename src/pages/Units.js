@@ -254,10 +254,8 @@ const Units = () => {
   return (
     <>
       <h1 className="header">Unit Conversion</h1>
-      <h2 className="description">
-        Conversion Between Measurement Units
-      </h2>
-
+      <img src="https://www.seekpng.com/png/detail/61-610271_png-file-pencil-ruler-svg.png" alt="Png File - Pencil Ruler Svg@seekpng.com" className="ruler-img"></img>
+     
       <div className="unit-container">
         <div className="kind-container">
           <h4 className="kind-text">Select Measurement</h4>

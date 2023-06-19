@@ -113,3 +113,9 @@
   font-weight: bold;
   color: white;
 }
+
+.ruler-img {
+  height: 8%;
+  background: transparent;
+  margin-bottom: 0.5rem;
+}
