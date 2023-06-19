@@ -243,14 +243,30 @@ const Units = () => {
 
   const [after, setAfter] = useState(null);
 
+  const [value_before, setEnterValue] = useState(null);
+
+  const [value_after, setAfterValue] = useState(null);
+
+  const [ratio, setRatio] = useState(null);
+
+
   const kindHandler = (e) => {
     setBefore(null);
     setAfter(null);
     setKind(e.value);
   };
 
-  let value_after = 2;
-  let ratio = 8;
+  const inputHandler = (value) => {
+    if(value < 0 && kind !== Temperature){
+      alert("Negative Number Makes No Sense Here!!!");
+    }
+    else{
+      setEnterValue(value);
+    }
+  }
+
+  
+  
   return (
     <>
       <h1 className="header">Unit Conversion</h1>
@@ -280,7 +296,7 @@ const Units = () => {
         <div className = 'original-container'>
           <h4>From: </h4>
         
-          <input  className='value-enter' placeholder="Value" type="number"/>
+          <input  className='value-enter' placeholder="Value" type="number" onChange={inputHandler}/>
           <div className="kind-dropdown">
             <Select
               options={kind}
