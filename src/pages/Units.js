@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Select from "react-select";
+import arrow from '../arrow.svg'
 import "./Units.css";
 const Length = [
   { label: "Nanometer", value: 1 },
@@ -240,11 +241,14 @@ const Units = () => {
 
   const [before, setBefore] = useState(null);
 
+  const [after, setAfter] = useState(null);
+
   const kindHandler = (e) => {
-    setBefore('');
+    setBefore(null);
+    setAfter(null);
     setKind(e.value);
   };
-    
+  
   return (
     <>
       <h1 className="header">Unit Conversion</h1>
@@ -276,7 +280,7 @@ const Units = () => {
         <div className = 'original-container'>
           <h4>From: </h4>
         
-          <input  className='value-enter' placeholder="Value"/>
+          <input  className='value-enter' placeholder="Value" type="number"/>
           <div className="kind-dropdown">
             <Select
               options={kind}
@@ -296,6 +300,9 @@ const Units = () => {
               }}
             />
           </div>
+        </div>
+        <div className="arrow-container">
+        <img src={arrow} alt='Arrow' className='arrow'/>
         </div>
       </div>
     </>
