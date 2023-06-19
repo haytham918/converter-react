@@ -1,13 +1,13 @@
 import { useState } from "react";
 import Select from "react-select";
-import arrow from '../arrow.svg'
+import arrow from "../arrow.svg";
 import "./Units.css";
 const Length = [
   { label: "Nanometer", value: 1 },
   { label: "Micrometer", value: 1000 },
   { label: "Millimeter", value: 1000000 },
   { label: "Centimeter", value: 10e7 },
-  { label: "Meter", vaue: 10e9 },
+  { label: "Meter", value: 10e9 },
   { label: "Kilometer", value: 10e12 },
   { label: "Inch", value: 2.54 * 10e7 },
   { label: "Foot", value: 3.048 * 10e8 },
@@ -186,46 +186,44 @@ const units_kind = [
 ];
 
 const Units = () => {
-  const converter = (the_dictionary, value_before, before, after) => {
+  const converter = (before_label, before_value, after_label, after_value) => {
     let formula, value_after, conversion;
-    if (before === "Liter per 100 kilometers") {
-      formula = `${282.481 / the_dictionary[after]}/x`;
-      value_after =
-        the_dictionary[before] / the_dictionary[after] / value_before;
+    if (before_label === "Liter per 100 kilometers") {
+      formula = `${282.481 / after_value}/x`;
+      value_after = before_value / after_value / value_before;
       conversion = { formula: formula, value_after: value_after };
-    } else if (after === "Liter per 100 kilometers") {
-      formula = `${282.481 / the_dictionary[before]}/x`;
-      value_after =
-        the_dictionary[after] / the_dictionary[before] / value_before;
+    } else if (after_label === "Liter per 100 kilometers") {
+      formula = `${282.481 / before_value}/x`;
+      value_after = after_value / before_value / value_before;
       conversion = { formula: formula, value_after: value_after };
     } else {
-      formula = the_dictionary[before] / the_dictionary[after];
+      formula = before_value / after_value;
       value_after = formula * value_before;
       conversion = { formula: formula, value_after: value_after };
     }
     return conversion;
   };
 
-  const temperature = (value_before, before, after) => {
+  const temperature = (before_label, after_label) => {
     let formula, value_after, conversion;
-    if (before === "Celsius") {
-      if (after === "Kelvin") {
+    if (before_label === "Celsius") {
+      if (after_label === "Kelvin") {
         formula = "x + 273.15";
         value_after = value_before + 273.15;
       } else {
         formula = "x*(1.8) + 32";
         value_after = value_before * 1.8 + 32;
       }
-    } else if (before === "Kelvin") {
-      if (after === "Celsius") {
+    } else if (before_label === "Kelvin") {
+      if (after_label === "Celsius") {
         formula = "x - 273.15";
         value_after = value_before - 273.15;
       } else {
         formula = "(x-273.15) * (1.8) + 32";
         value_after = (value_before - 273.15) * 1.8 + 32;
       }
-    } else if (before === "Fahrenheit") {
-      if (after === "Celsius") {
+    } else if (before_label === "Fahrenheit") {
+      if (after_label === "Celsius") {
         formula = "(x-32) * 5/9 ";
         value_after = ((value_before - 32) * 5) / 9;
       } else {
@@ -249,29 +247,69 @@ const Units = () => {
 
   const [ratio, setRatio] = useState(null);
 
-
   const kindHandler = (e) => {
+    setEnterValue("");
+    setAfterValue(null);
     setBefore(null);
     setAfter(null);
     setKind(e.value);
   };
 
-  const inputHandler = (value) => {
-    if(value < 0 && kind !== Temperature){
-      alert("Negative Number Makes No Sense Here!!!");
-    }
-    else{
-      setEnterValue(value);
-    }
-  }
+  const orinHandler = (e) => {
+    setAfterValue(null);
+    setBefore(e);
+  };
 
-  
-  
+  const aftHandler = (e) => {
+    setAfterValue(null);
+    setAfter(e);
+  };
+
+  const message = () => {
+    alert("Negative Number Makes No Sense Here!!!");
+  };
+
+  const pickBoth = () => {
+    alert("Make Sure You Picked Both Units!!!");
+  };
+
+  const inputHandler = (e) => {
+    setEnterValue(e.target.value);
+  };
+
+  const clickHandler = () => {
+    if (value_before < 0 && kind !== Temperature) {
+      message();
+    } else {
+      if (before && after) {
+        let conversion;
+        if (kind !== Temperature) {
+          conversion = converter(
+            before.label,
+            before.value,
+            after.label,
+            after.value
+          );
+        } else {
+          conversion = temperature(before.label, after.label);
+        }
+        setRatio(conversion.formula);
+        setAfterValue(conversion.value_after);
+      } else {
+        pickBoth();
+      }
+    }
+  };
+
   return (
     <>
       <h1 className="header">Unit Conversion</h1>
-      <img src="https://www.seekpng.com/png/detail/61-610271_png-file-pencil-ruler-svg.png" alt="Png File - Pencil Ruler Svg@seekpng.com" className="ruler-img"></img>
-     
+      <img
+        src="https://www.seekpng.com/png/detail/61-610271_png-file-pencil-ruler-svg.png"
+        alt="Png File - Pencil Ruler Svg@seekpng.com"
+        className="ruler-img"
+      ></img>
+
       <div className="unit-container">
         <div className="kind-container">
           <h4 className="kind-text">Select Measurement</h4>
@@ -280,37 +318,43 @@ const Units = () => {
               options={units_kind}
               onChange={kindHandler}
               styles={{
-                control: (baseStyles, state) => ({
+                control: (baseStyles) => ({
                   ...baseStyles,
                   borderColor: "green",
                   borderRadius: "0.5rem",
                   fontSize: "120%",
                   textAlign: "center",
-                  fontWeight: 'bold',
+                  fontWeight: "bold",
                   fontFamily: "Verdana",
                 }),
               }}
             />
           </div>
         </div>
-        <div className = 'original-container'>
+        <div className="original-container">
           <h4>From: </h4>
-        
-          <input  className='value-enter' placeholder="Value" type="number" onChange={inputHandler}/>
+
+          <input
+            className="value-enter"
+            placeholder="Value"
+            type="number"
+            value={value_before}
+            onChange={inputHandler}
+          />
           <div className="kind-dropdown">
             <Select
               options={kind}
               isDisabled={kind === null}
               value={before}
-              onChange={setBefore}
+              onChange={orinHandler}
               styles={{
-                control: (baseStyles, state) => ({
+                control: (baseStyles) => ({
                   ...baseStyles,
                   borderColor: "green",
                   borderRadius: "0.5rem",
                   fontSize: "120%",
                   textAlign: "center",
-                  fontWeight: 'bold',
+                  fontWeight: "bold",
                   fontFamily: "Verdana",
                 }),
               }}
@@ -318,29 +362,33 @@ const Units = () => {
           </div>
         </div>
         <div className="arrow-container">
-        <img src={arrow} alt='Arrow' className='arrow'/>
+          <button onClick={clickHandler} className="convert-button">
+            Convert!
+          </button>
+          <img src={arrow} alt="Arrow" className="arrow" />
         </div>
-
 
         <div className="to-container">
           <h4>To: </h4>
-          <div className = 'result-container'>
-            <p className = 'result-text'>{after === null ? 'Result' : value_after}</p>
-          </div>
+          {value_after === null ? null : (
+            <div className="result-container">
+              <p className="result-text">{value_after}</p>
+            </div>
+          )}
           <div className="kind-dropdown">
             <Select
               options={kind}
               isDisabled={kind === null}
               value={after}
-              onChange={setAfter}
+              onChange={aftHandler}
               styles={{
-                control: (baseStyles, state) => ({
+                control: (baseStyles) => ({
                   ...baseStyles,
                   borderColor: "green",
                   borderRadius: "0.5rem",
                   fontSize: "120%",
                   textAlign: "center",
-                  fontWeight: 'bold',
+                  fontWeight: "bold",
                   fontFamily: "Verdana",
                 }),
               }}
@@ -348,11 +396,13 @@ const Units = () => {
           </div>
         </div>
 
-        <div className='ratio-container'>
+        <div className="ratio-container">
           <h4>Ratio: </h4>
-          <div className="formula-container">
-          <p className = 'formula-text'>{ratio}</p>
-          </div>
+          {after === null || value_after === null ? null : (
+            <div className="formula-container">
+              <p className="formula-text">{ratio}</p>
+            </div>
+          )}
         </div>
       </div>
     </>
