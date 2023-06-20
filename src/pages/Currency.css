@@ -3,8 +3,18 @@
 }
 
 .coin {
-  height: 20%;
+  height: 8%;
   margin-bottom: 0.5rem;
   margin-top: 0.2rem;
-  width: 100%;
+  width: 50%;
+}
+
+.currency-container{
+  width: 80%;
+  height: 70%;
+  border-radius: 0.5rem;
+  background-color: rgb(231, 205, 246);
+  box-shadow: 0rem 0.2rem 0.8rem rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
 }
