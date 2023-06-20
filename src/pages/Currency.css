@@ -2,6 +2,9 @@
   text-align: center;
 }
 
-.descrption{
-  text-align: center;
+.coin {
+  height: 20%;
+  margin-bottom: 0.5rem;
+  margin-top: 0.2rem;
+  width: 100%;
 }
