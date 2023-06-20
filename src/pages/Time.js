@@ -1,8 +1,10 @@
-
+import './Time.css'
 
 const Time = () => {
   return(
-    <h1>Time</h1>
+    <>
+    <h1 className='header'>Time Conversion</h1>
+    </>
   )
 }
 
