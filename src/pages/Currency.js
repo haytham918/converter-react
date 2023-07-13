@@ -1,5 +1,6 @@
 import './Currency.css'
 import coin from "../coin.svg"
+import arrow from "../arrow.svg"
 import { useState } from 'react'
 import Select from 'react-select'
 const Currency = () => {
@@ -41,6 +42,13 @@ const Currency = () => {
               }}
             />
           </div>
+          
+        </div>
+        <div className="arrow-container">
+          <button onClick={()=>{}} className="convert-button">
+            Convert!
+          </button>
+          <img src={arrow} alt="Arrow" className="arrow" />
         </div>
       </div>
       </>
