@@ -1,3 +1,4 @@
+import { Axios } from 'axios'
 import './Currency.css'
 import coin from "../coin.svg"
 import arrow from "../arrow.svg"
@@ -13,6 +14,9 @@ const Currency = () => {
     setEnterValue(e.target.value);
   };
 
+  async function getData(){
+    const result = await Axios.get()
+  }
   return(
   
     <>

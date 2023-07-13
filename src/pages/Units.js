@@ -248,6 +248,7 @@ const Units = () => {
   const [ratio, setRatio] = useState(null);
 
   const kindHandler = (e) => {
+    e.preventDefault();
     setEnterValue("");
     setAfterValue(null);
     setBefore(null);
@@ -256,11 +257,13 @@ const Units = () => {
   };
 
   const orinHandler = (e) => {
+    e.preventDefault();
     setAfterValue(null);
     setBefore(e);
   };
 
   const aftHandler = (e) => {
+    e.preventDefault();
     setAfterValue(null);
     setAfter(e);
   };
@@ -274,10 +277,12 @@ const Units = () => {
   };
 
   const inputHandler = (e) => {
+    e.preventDefault();
     setEnterValue(e.target.value);
   };
 
-  const clickHandler = () => {
+  const clickHandler = (e) => {
+    e.preventDefault();
     if (value_before < 0 && kind !== Temperature) {
       message();
     } else {
@@ -397,7 +402,7 @@ const Units = () => {
         </div>
 
         <div className="ratio-container">
-          <h4>Ratio: </h4>
+          <h4>Ratio/Formula: </h4>
           {after === null || value_after === null ? null : (
             <div className="formula-container">
               <p className="formula-text">{ratio}</p>
