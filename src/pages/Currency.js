@@ -6,10 +6,10 @@ import { useEffect, useState } from 'react'
 import Select from 'react-select'
 const Currency = () => {
 
- const  convertURL = "http://data.fixer.io/api/convert?access_key=0ccba43ed82b96bca5e8206f5f1f094a"
 const symbolsURL = "http://data.fixer.io/api/symbols?access_key=0ccba43ed82b96bca5e8206f5f1f094a"
 const latestURL = "http://data.fixer.io/api/latest?access_key=0ccba43ed82b96bca5e8206f5f1f094a"
 
+  const [codeNames, setCodeName] = useState(null);
   const [value_before, setEnterValue] = useState(null);
   const [value_after, setAfterValue] = useState(null);
   const [country1, setCountry1] = useState(null);
