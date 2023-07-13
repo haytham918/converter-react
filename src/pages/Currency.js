@@ -6,16 +6,18 @@ import { useEffect, useState } from 'react'
 import Select from 'react-select'
 const Currency = () => {
 
- const  convertURL = "http://data.fixer.io/api/convert"
-const symbolsURL = "http://data.fixer.io/api/symbols"
+ const  convertURL = "http://data.fixer.io/api/convert?access_key=0ccba43ed82b96bca5e8206f5f1f094a"
+const symbolsURL = "http://data.fixer.io/api/symbols?access_key=0ccba43ed82b96bca5e8206f5f1f094a"
 const latestURL = "http://data.fixer.io/api/latest?access_key=0ccba43ed82b96bca5e8206f5f1f094a"
 
   const [value_before, setEnterValue] = useState(null);
   const [value_after, setAfterValue] = useState(null);
-  const [before, setBefore] = useState(null);
-  const [after, setAfter] = useState(null);
+  const [country1, setCountry1] = useState(null);
+  const [country2, setCountry2] = useState(null);
   const [exchangeRate, setRate] = useState(null);
+
   const inputHandler = (e) => {
+    e.preventDefault();
     setEnterValue(e.target.value);
   };
 
@@ -24,7 +26,7 @@ const latestURL = "http://data.fixer.io/api/latest?access_key=0ccba43ed82b96bca5
   },[])
 
   async function getData(){
-    const result = await axios.get(latestURL);
+    const result = await axios.get(symbolsURL);
     console.log(result.data);
   }
   return(
@@ -79,7 +81,7 @@ const latestURL = "http://data.fixer.io/api/latest?access_key=0ccba43ed82b96bca5
             <Select
               options={[]}
               isDisabled={true}
-              value={after}
+              value={country2}
               styles={{
                 control: (baseStyles) => ({
                   ...baseStyles,
@@ -97,7 +99,7 @@ const latestURL = "http://data.fixer.io/api/latest?access_key=0ccba43ed82b96bca5
 
         <div className="ratio-container">
           <h4>Exchange Rate: </h4>
-          {after === null || value_after === null ? null : (
+          {country2 === null || value_after === null ? null : (
             <div className="formula-container">
               <p className="formula-text">{exchangeRate}</p>
             </div>
