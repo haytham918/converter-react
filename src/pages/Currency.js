@@ -1,10 +1,15 @@
-import { Axios } from 'axios'
+import axios from 'axios'
 import './Currency.css'
 import coin from "../coin.svg"
 import arrow from "../arrow.svg"
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Select from 'react-select'
 const Currency = () => {
+
+ const  convertURL = "http://data.fixer.io/api/convert"
+const symbolsURL = "http://data.fixer.io/api/symbols"
+const latestURL = "http://data.fixer.io/api/latest?access_key=0ccba43ed82b96bca5e8206f5f1f094a"
+
   const [value_before, setEnterValue] = useState(null);
   const [value_after, setAfterValue] = useState(null);
   const [before, setBefore] = useState(null);
@@ -14,8 +19,13 @@ const Currency = () => {
     setEnterValue(e.target.value);
   };
 
+  useEffect(() => {
+    getData();
+  },[])
+
   async function getData(){
-    const result = await Axios.get()
+    const result = await axios.get(latestURL);
+    console.log(result.data);
   }
   return(
   
