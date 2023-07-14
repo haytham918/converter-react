@@ -11,22 +11,34 @@ const latestURL = "http://data.fixer.io/api/latest?access_key=0ccba43ed82b96bca5
 
   const [country1, setCountry1] = useState('');
   const [country2, setCountry2] = useState('');
-  const [value_before, setEnterValue] = useState(null);
-  const [value_after, setAfterValue] = useState(null);
+  const [value_before, setEnterValue] = useState('');
+  const [value_after, setAfterValue] = useState('');
   const [countryList, setCountryList] = useState({});
   const [exchangeList, setExchangeList] = useState({});
-  const [exchangeRate, setRate] = useState(null);
+  const [exchangeRate, setRate] = useState('');
+
 
   const inputHandler = (e) => {
-    setEnterValue(e.target.value);
+   setEnterValue(e.target.value);
   };
 
   const beforeHandler = (e) => {
-    setCountry1(e);
+    setCountry1(e.value);
   }
 
   const afterHandler = (e) => {
-    setCountry2(e);
+    setCountry2(e.value);
+
+  }
+
+  const clickHandler = () => {
+    if(country1 !== '' && country2 !== ''){
+      let exchangeValue1 = exchangeList[country1];
+      let exchangeValue2 = exchangeList[country2];
+      let ratio = exchangeValue2 / exchangeValue1; 
+      setRate(ratio);
+      setAfterValue((value_before * ratio).toFixed(3));
+    }
   }
 
   useEffect(() => {
@@ -78,7 +90,7 @@ const latestURL = "http://data.fixer.io/api/latest?access_key=0ccba43ed82b96bca5
           
         </div>
         <div className="arrow-container">
-          <button onClick={()=>{}} className="convert-button">
+          <button onClick={clickHandler} className="convert-button">
             Convert!
           </button>
           <img src={arrow} alt="Arrow" className="arrow" />
@@ -86,7 +98,7 @@ const latestURL = "http://data.fixer.io/api/latest?access_key=0ccba43ed82b96bca5
 
         <div className="to-container">
           <h4>To: </h4>
-          {value_after === null ? null : (
+          {value_after === '' ? null : (
             <div className="result-container">
               <p className="result-text">{value_after}</p>
             </div>
@@ -112,7 +124,7 @@ const latestURL = "http://data.fixer.io/api/latest?access_key=0ccba43ed82b96bca5
 
         <div className="ratio-container">
           <h4>Exchange Rate: </h4>
-          {val === null || value_after === null ? null : (
+          {country2 === '' || value_after === '' ? null : (
             <div className="formula-container">
               <p className="formula-text">{exchangeRate}</p>
             </div>

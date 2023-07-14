@@ -249,19 +249,19 @@ const Units = () => {
 
   const kindHandler = (e) => {
     setEnterValue("");
-    setAfterValue(null);
-    setBefore(null);
-    setAfter(null);
+    setAfterValue('');
+    setBefore('');
+    setAfter('');
     setKind(e.value);
   };
 
   const orinHandler = (e) => {
-    setAfterValue(null);
+    setAfterValue('');
     setBefore(e);
   };
 
   const aftHandler = (e) => {
-    setAfterValue(null);
+    setAfterValue('');
     setAfter(e);
   };
 
