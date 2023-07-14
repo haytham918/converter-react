@@ -9,16 +9,25 @@ const Currency = () => {
 const symbolsURL = "http://data.fixer.io/api/symbols?access_key=0ccba43ed82b96bca5e8206f5f1f094a"
 const latestURL = "http://data.fixer.io/api/latest?access_key=0ccba43ed82b96bca5e8206f5f1f094a"
 
-  const [codeNames, setCodeName] = useState(null);
+  const [country1, setCountry1] = useState('');
+  const [country2, setCountry2] = useState('');
   const [value_before, setEnterValue] = useState(null);
   const [value_after, setAfterValue] = useState(null);
   const [countryList, setCountryList] = useState({});
+  const [exchangeList, setExchangeList] = useState({});
   const [exchangeRate, setRate] = useState(null);
 
   const inputHandler = (e) => {
-    e.preventDefault();
     setEnterValue(e.target.value);
   };
+
+  const beforeHandler = (e) => {
+    setCountry1(e);
+  }
+
+  const afterHandler = (e) => {
+    setCountry2(e);
+  }
 
   useEffect(() => {
     getData();
@@ -26,10 +35,13 @@ const latestURL = "http://data.fixer.io/api/latest?access_key=0ccba43ed82b96bca5
 
   async function getData(){
     const result = await axios.get(symbolsURL);
+    const latestResult = await axios.get(latestURL);
     const data = result.data.symbols;
+    const latestData = latestResult.data.rates;
     setCountryList(data);
+    setExchangeList(latestData);
+    
   }
-
   let val = Object.keys(countryList).map((key) => {return {label: `(${key}) ` + countryList[key], value: key}});
   return(
   
@@ -49,6 +61,7 @@ const latestURL = "http://data.fixer.io/api/latest?access_key=0ccba43ed82b96bca5
           <div className="kind-dropdown">
             <Select
             options={val}
+            onChange={beforeHandler}
               styles={{
                 control: (baseStyles) => ({
                   ...baseStyles,
@@ -81,6 +94,7 @@ const latestURL = "http://data.fixer.io/api/latest?access_key=0ccba43ed82b96bca5
           <div className="kind-dropdown">
             <Select
               options={val}
+              onChange={afterHandler}
               styles={{
                 control: (baseStyles) => ({
                   ...baseStyles,

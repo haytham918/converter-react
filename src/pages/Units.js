@@ -235,20 +235,19 @@ const Units = () => {
     return conversion;
   };
 
-  const [kind, setKind] = useState(null);
+  const [kind, setKind] = useState('');
 
-  const [before, setBefore] = useState(null);
+  const [before, setBefore] = useState('');
 
-  const [after, setAfter] = useState(null);
+  const [after, setAfter] = useState('');
 
-  const [value_before, setEnterValue] = useState(null);
+  const [value_before, setEnterValue] = useState('');
 
-  const [value_after, setAfterValue] = useState(null);
+  const [value_after, setAfterValue] = useState('');
 
-  const [ratio, setRatio] = useState(null);
+  const [ratio, setRatio] = useState('');
 
   const kindHandler = (e) => {
-    e.preventDefault();
     setEnterValue("");
     setAfterValue(null);
     setBefore(null);
@@ -257,13 +256,11 @@ const Units = () => {
   };
 
   const orinHandler = (e) => {
-    e.preventDefault();
     setAfterValue(null);
     setBefore(e);
   };
 
   const aftHandler = (e) => {
-    e.preventDefault();
     setAfterValue(null);
     setAfter(e);
   };
@@ -277,12 +274,10 @@ const Units = () => {
   };
 
   const inputHandler = (e) => {
-    e.preventDefault();
     setEnterValue(e.target.value);
   };
 
   const clickHandler = (e) => {
-    e.preventDefault();
     if (value_before < 0 && kind !== Temperature) {
       message();
     } else {
@@ -349,7 +344,7 @@ const Units = () => {
           <div className="kind-dropdown">
             <Select
               options={kind}
-              isDisabled={kind === null}
+              isDisabled={kind === ''}
               value={before}
               onChange={orinHandler}
               styles={{
@@ -375,7 +370,7 @@ const Units = () => {
 
         <div className="to-container">
           <h4>To: </h4>
-          {value_after === null ? null : (
+          {value_after === '' ? null : (
             <div className="result-container">
               <p className="result-text">{value_after}</p>
             </div>
@@ -383,7 +378,7 @@ const Units = () => {
           <div className="kind-dropdown">
             <Select
               options={kind}
-              isDisabled={kind === null}
+              isDisabled={kind === ''}
               value={after}
               onChange={aftHandler}
               styles={{
@@ -403,7 +398,7 @@ const Units = () => {
 
         <div className="ratio-container">
           <h4>Ratio/Formula: </h4>
-          {after === null || value_after === null ? null : (
+          {after === '' || value_after === '' ? null : (
             <div className="formula-container">
               <p className="formula-text">{ratio}</p>
             </div>
