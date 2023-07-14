@@ -12,8 +12,7 @@ const latestURL = "http://data.fixer.io/api/latest?access_key=0ccba43ed82b96bca5
   const [codeNames, setCodeName] = useState(null);
   const [value_before, setEnterValue] = useState(null);
   const [value_after, setAfterValue] = useState(null);
-  const [country1, setCountry1] = useState(null);
-  const [country2, setCountry2] = useState(null);
+  const [countryList, setCountryList] = useState({});
   const [exchangeRate, setRate] = useState(null);
 
   const inputHandler = (e) => {
@@ -27,8 +26,11 @@ const latestURL = "http://data.fixer.io/api/latest?access_key=0ccba43ed82b96bca5
 
   async function getData(){
     const result = await axios.get(symbolsURL);
-    console.log(result.data);
+    const data = result.data.symbols;
+    setCountryList(data);
   }
+
+  let val = Object.keys(countryList).map((key) => {return {label: `(${key}) ` + countryList[key], value: key}});
   return(
   
     <>
@@ -46,8 +48,7 @@ const latestURL = "http://data.fixer.io/api/latest?access_key=0ccba43ed82b96bca5
           />
           <div className="kind-dropdown">
             <Select
-            options={[]}
-            isDisabled={true}
+            options={val}
               styles={{
                 control: (baseStyles) => ({
                   ...baseStyles,
@@ -79,9 +80,7 @@ const latestURL = "http://data.fixer.io/api/latest?access_key=0ccba43ed82b96bca5
           )}
           <div className="kind-dropdown">
             <Select
-              options={[]}
-              isDisabled={true}
-              value={country2}
+              options={val}
               styles={{
                 control: (baseStyles) => ({
                   ...baseStyles,
@@ -99,7 +98,7 @@ const latestURL = "http://data.fixer.io/api/latest?access_key=0ccba43ed82b96bca5
 
         <div className="ratio-container">
           <h4>Exchange Rate: </h4>
-          {country2 === null || value_after === null ? null : (
+          {val === null || value_after === null ? null : (
             <div className="formula-container">
               <p className="formula-text">{exchangeRate}</p>
             </div>

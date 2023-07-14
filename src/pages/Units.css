@@ -15,7 +15,7 @@
 }
 
 .unit-container{
-  width: 80%;
+  width: 90%;
   height: 70%;
   border-radius: 0.5rem;
   background-color: powderblue;
@@ -25,7 +25,7 @@
 }
 
 .kind-dropdown {
-  width: 45%;
+  width: 55%;
 }
 
 .kind-text {
@@ -54,7 +54,7 @@
 }
 
 .value-enter {
-  width: 30%;
+  width: 20%;
   height: 70%;
   text-align: center;
   font-size: 80%;
