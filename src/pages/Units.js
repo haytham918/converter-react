@@ -293,8 +293,8 @@ const Units = () => {
         } else {
           conversion = temperature(before.label, after.label);
         }
-        setRatio(conversion.formula);
-        setAfterValue(conversion.value_after);
+        setRatio(conversion.formula.toLocaleString('en'));
+        setAfterValue(conversion.value_after.toLocaleString('en'));
       } else {
         pickBoth();
       }

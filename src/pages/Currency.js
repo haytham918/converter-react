@@ -23,12 +23,18 @@ const latestURL = "http://data.fixer.io/api/latest?access_key=0ccba43ed82b96bca5
   };
 
   const beforeHandler = (e) => {
+    setAfterValue('');
     setCountry1(e.value);
   }
 
   const afterHandler = (e) => {
+    setAfterValue('');
     setCountry2(e.value);
 
+  }
+
+  const pickBoth = () => {
+    alert('Please Pick Both Currencies!!!')
   }
 
   const clickHandler = () => {
@@ -36,8 +42,10 @@ const latestURL = "http://data.fixer.io/api/latest?access_key=0ccba43ed82b96bca5
       let exchangeValue1 = exchangeList[country1];
       let exchangeValue2 = exchangeList[country2];
       let ratio = exchangeValue2 / exchangeValue1; 
-      setRate(ratio);
-      setAfterValue((value_before * ratio).toFixed(3));
+      setRate(Number(ratio).toLocaleString('en'));
+      setAfterValue(Number(value_before * ratio.toFixed(3)).toLocaleString('en'));
+    }else{
+      pickBoth();
     }
   }
 
