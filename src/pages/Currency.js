@@ -179,8 +179,8 @@ const latestURL = "http://data.fixer.io/api/latest?access_key=0ccba43ed82b96bca5
   const [exchangeList, setExchangeList] = useState({});
   const [exchangeRate, setRate] = useState('');
 
-  const [flag1, setFlag1] = useState('');
-  const [flag2, setFlag2] = useState('');
+  const [flag1, setFlag1] = useState(`https://flagsapi.com/CN/shiny/32.png`);
+  const [flag2, setFlag2] = useState(`https://flagsapi.com/US/shiny/32.png`);
 
   const createFlag1 = (str) => {
     setFlag1(`https://flagsapi.com/${str}/shiny/32.png`);
@@ -236,7 +236,8 @@ const latestURL = "http://data.fixer.io/api/latest?access_key=0ccba43ed82b96bca5
     setExchangeList(latestData);
     
   }
-  let val = Object.keys(countryList).map((key) => {return {label: `(${key}) ` + countryList[key], value: key}});
+  
+ // let val = Object.keys(countryList).map((key) => {return {label: `(${key}) ` + countryList[key], value: key}});
   return(
   
     <>
@@ -254,7 +255,7 @@ const latestURL = "http://data.fixer.io/api/latest?access_key=0ccba43ed82b96bca5
           />
           <div className="kind-dropdown">
             <Select
-            options={val}
+            options={[]}
             onChange={beforeHandler}
               styles={{
                 control: (baseStyles) => ({
@@ -271,11 +272,15 @@ const latestURL = "http://data.fixer.io/api/latest?access_key=0ccba43ed82b96bca5
           </div>
           
         </div>
-        <div className="arrow-container">
+        <div className="convert-container">
           <button onClick={clickHandler} className="convert-button">
             Convert!
           </button>
+          <div className='flag-container'>
+            {flag1 !== '' ? <img src={flag1} alt={country1} className='flag'/> : null}
           <img src={arrow} alt="Arrow" className="arrow" />
+          {flag2 !== '' ? <img src={flag2} alt={country2} className='flag'/> : null}
+          </div>
         </div>
 
         <div className="to-container">
@@ -287,7 +292,7 @@ const latestURL = "http://data.fixer.io/api/latest?access_key=0ccba43ed82b96bca5
           )}
           <div className="kind-dropdown">
             <Select
-              options={val}
+              options={[]}
               onChange={afterHandler}
               styles={{
                 control: (baseStyles) => ({
