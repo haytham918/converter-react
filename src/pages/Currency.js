@@ -4,6 +4,7 @@ import coin from "../coin.svg"
 import arrow from "../arrow.svg"
 import { useEffect, useState } from 'react'
 import Select from 'react-select'
+import bitcoin from '../bitcoin.svg'
 const Currency = () => {
 
   let  countryCode = {
@@ -179,15 +180,23 @@ const latestURL = "http://data.fixer.io/api/latest?access_key=0ccba43ed82b96bca5
   const [exchangeList, setExchangeList] = useState({});
   const [exchangeRate, setRate] = useState('');
 
-  const [flag1, setFlag1] = useState(`https://flagsapi.com/CN/shiny/32.png`);
-  const [flag2, setFlag2] = useState(`https://flagsapi.com/US/shiny/32.png`);
+  const [flag1, setFlag1] = useState(bitcoin);
+  const [flag2, setFlag2] = useState(`https://flagsapi.com/CN/shiny/32.png`);
 
   const createFlag1 = (str) => {
+    if(str === 'BTC'){
+      setFlag1(bitcoin)
+    }else{
     setFlag1(`https://flagsapi.com/${str}/shiny/32.png`);
+    }
   }
 
   const createFlag2 = (str) => {
-    setFlag2(`https://flagsapi.com/${str}/shiny/32.png`)
+    if(str === 'BTC'){
+      setFlag2(bitcoin)
+    }else{
+      setFlag2(`https://flagsapi.com/${str}/shiny/32.png`)
+    }
   }
 
 
@@ -230,19 +239,26 @@ const latestURL = "http://data.fixer.io/api/latest?access_key=0ccba43ed82b96bca5
   async function getData(){
     const result = await axios.get(symbolsURL);
     const latestResult = await axios.get(latestURL);
-    const data = result.data.symbols;
+    if(latestResult.data.success){
+      const data = result.data.symbols;
     const latestData = latestResult.data.rates;
     setCountryList(data);
     setExchangeList(latestData);
+    }
     
   }
-  
- // let val = Object.keys(countryList).map((key) => {return {label: `(${key}) ` + countryList[key], value: key}});
+  let val = [];
+  if(countryList !== '')
+  {
+    val = Object.keys(countryList).map((key) => {return {label: `(${key}) ` + countryList[key], value: key}});
+  }
   return(
   
     <>
       <h1 className='header'>Currency Conversion</h1>
       <img src={coin} alt='Coin' className='coin' />
+
+      {countryList === '' ? 
       <div className='currency-container'>
         <div className='original-container'>
           <h4>From: </h4>
@@ -255,7 +271,7 @@ const latestURL = "http://data.fixer.io/api/latest?access_key=0ccba43ed82b96bca5
           />
           <div className="kind-dropdown">
             <Select
-            options={[]}
+            options={val}
             onChange={beforeHandler}
               styles={{
                 control: (baseStyles) => ({
@@ -292,7 +308,7 @@ const latestURL = "http://data.fixer.io/api/latest?access_key=0ccba43ed82b96bca5
           )}
           <div className="kind-dropdown">
             <Select
-              options={[]}
+              options={val}
               onChange={afterHandler}
               styles={{
                 control: (baseStyles) => ({
@@ -317,7 +333,7 @@ const latestURL = "http://data.fixer.io/api/latest?access_key=0ccba43ed82b96bca5
             </div>
           )}
         </div>
-      </div>
+      </div> : <h1>Ooops... API Usage Limited:/<br></br>Come Back Later...</h1>}
       </>
    
   )
