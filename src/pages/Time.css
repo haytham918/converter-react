@@ -1,3 +1,8 @@
 .header{
   text-align: center;
 }
+
+.clock {
+  height: 8%;
+  margin-bottom: 0.5rem;
+}

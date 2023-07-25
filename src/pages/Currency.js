@@ -1,11 +1,10 @@
-import axios from "axios";
 import "./Currency.css";
 import coin from "../coin.svg";
 import arrow from "../arrow.svg";
-import { useEffect, useState } from "react";
+import {useState } from "react";
 import Select from "react-select";
 import bitcoin from "../bitcoin.svg";
-const Currency = (countryList, exchangeList) => {
+const Currency = (props) => {
   let countryCode = {
     AED: "AE",
     AFN: "AF",
@@ -215,8 +214,8 @@ const Currency = (countryList, exchangeList) => {
 
   const clickHandler = () => {
     if (country1 !== "" && country2 !== "") {
-      let exchangeValue1 = exchangeList[country1];
-      let exchangeValue2 = exchangeList[country2];
+      let exchangeValue1 = props.exchangeList[country1];
+      let exchangeValue2 = props.exchangeList[country2];
       let ratio = exchangeValue2 / exchangeValue1;
       setRate(Number(ratio).toLocaleString("en"));
       setAfterValue(
@@ -228,17 +227,18 @@ const Currency = (countryList, exchangeList) => {
   };
 
   let val = [];
-  if (countryList !== "") {
-    val = Object.keys(countryList).map((key) => {
-      return { label: `(${key}) ` + countryList[key], value: key };
+  if (props.countryList !== "") {
+    val = Object.keys(props.countryList).map((key) => {
+      return { label: `(${key}) ` + props.countryList[key], value: key };
     });
   }
+ 
   return (
     <>
       <h1 className="header">Currency Conversion</h1>
       <img src={coin} alt="Coin" className="coin" />
 
-      {countryList === "" ? (
+      {props.countryList !== '' ? (
         <div className="currency-container">
           <div className="original-container">
             <h4>From: </h4>
