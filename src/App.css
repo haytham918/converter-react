@@ -1,4 +1,4 @@
-.page-container{
+.page-container {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -7,13 +7,14 @@
   height: 100%;
 }
 
-
-
-.overall{
+.overall {
   height: 100%;
 }
 
-html, body, #root, .App {
+html,
+body,
+#root,
+.App {
   height: 100%;
   overflow: hidden;
 }

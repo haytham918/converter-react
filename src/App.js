@@ -12,14 +12,14 @@ const App = () => {
     "http://data.fixer.io/api/symbols?access_key=0ccba43ed82b96bca5e8206f5f1f094a";
   const latestURL =
     "http://data.fixer.io/api/latest?access_key=0ccba43ed82b96bca5e8206f5f1f094a";
-  const [countryList, setCountryList] = useState('');
-  const [exchangeList, setExchangeList] = useState('');
+  const [countryList, setCountryList] = useState("");
+  const [exchangeList, setExchangeList] = useState("");
 
   // useEffect(() => {
   //   getData();
   // }, []);
 
-  console.log(countryList)
+  console.log(countryList);
 
   async function getData() {
     const result = await axios.get(symbolsURL);
@@ -40,8 +40,14 @@ const App = () => {
         <Routes>
           <Route path="/" Component={Units} />
           <Route path="/units" Component={Units} />
-          <Route path="/currency" exact element={<Currency countryList={countryList} exchangeList={exchangeList} />}/>
-            
+          <Route
+            path="/currency"
+            exact
+            element={
+              <Currency countryList={countryList} exchangeList={exchangeList} />
+            }
+          />
+
           <Route path="/time" Component={Time} />
         </Routes>
       </div>

@@ -8,7 +8,7 @@
   width: 50%;
 }
 
-.currency-container{
+.currency-container {
   width: 95%;
   height: 75%;
   border-radius: 0.5rem;
@@ -18,7 +18,7 @@
   flex-direction: column;
 }
 
-.original-container{
+.original-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -29,7 +29,7 @@
   box-shadow: 0rem 0.15rem aliceblue;
 }
 
-.flag-container{
+.flag-container {
   height: 100%;
   width: 50%;
   display: flex;
@@ -43,7 +43,7 @@
   margin-bottom: 0.5em;
 }
 
-.convert-container{
+.convert-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -52,10 +52,10 @@
   margin-bottom: 1rem;
   margin-left: 1rem;
   margin-right: 1rem;
-  gap: 15%
+  gap: 15%;
 }
 
-.arrow{
+.arrow {
   height: 50%;
   margin-bottom: 0.5em;
 }

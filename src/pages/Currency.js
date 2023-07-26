@@ -1,7 +1,7 @@
 import "./Currency.css";
 import coin from "../coin.svg";
 import arrow from "../arrow.svg";
-import {useState } from "react";
+import { useState } from "react";
 import Select from "react-select";
 import bitcoin from "../bitcoin.svg";
 const Currency = (props) => {
@@ -232,13 +232,13 @@ const Currency = (props) => {
       return { label: `(${key}) ` + props.countryList[key], value: key };
     });
   }
- 
+
   return (
     <>
       <h1 className="header">Currency Conversion</h1>
       <img src={coin} alt="Coin" className="coin" />
 
-      {props.countryList !== '' ? (
+      {props.countryList !== "" ? (
         <div className="currency-container">
           <div className="original-container">
             <h4>From: </h4>

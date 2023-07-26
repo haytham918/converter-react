@@ -1,9 +1,8 @@
-.header{
+.header {
   text-align: center;
 }
 
-
-.kind-container{
+.kind-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -14,7 +13,7 @@
   box-shadow: 0rem 0.15rem aliceblue;
 }
 
-.unit-container{
+.unit-container {
   width: 95%;
   height: 75%;
   border-radius: 0.5rem;
@@ -31,7 +30,6 @@
 .kind-text {
   width: 35%;
   font-family: Verdana;
-  
 }
 
 .original-container {
@@ -64,7 +62,6 @@
 
 .arrow {
   height: 85%;
-  
 }
 
 .arrow-container {
@@ -76,7 +73,7 @@
   margin-bottom: 1rem;
   margin-left: 1rem;
   margin-right: 1rem;
-  gap: 15%
+  gap: 15%;
 }
 
 .to-container {
@@ -90,7 +87,7 @@
   box-shadow: 0rem 0.15rem aliceblue;
 }
 
-.result-container{
+.result-container {
   width: 30%;
   border: solid;
   border-radius: 0.2rem;
@@ -100,10 +97,9 @@
   background-color: darkcyan;
   color: rgb(239, 139, 8);
   box-shadow: 0.2rem -0.2rem aquamarine;
-  
 }
 
-.result-text{
+.result-text {
   font-size: 80%;
   font-weight: bold;
   color: white;
@@ -113,28 +109,25 @@
   height: 8%;
   background: transparent;
   margin-bottom: 0.5rem;
-  
 }
 
-
-.formula-text{
+.formula-text {
   font-size: 80%;
   font-weight: bold;
 }
 
-.ratio-container{
+.ratio-container {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   gap: 30%;
   margin-top: 2rem;
-  
+
   margin-left: 1rem;
   margin-right: 1rem;
- 
 }
 
-.formula-container{
+.formula-container {
   width: 30%;
   border: dashed;
   border-radius: 0.2rem;
@@ -148,7 +141,7 @@
 .convert-button {
   width: 25%;
   height: 30%;
-  background-color: #0056D2;
+  background-color: #0056d2;
   color: white;
   border-color: aliceblue;
   font-size: 95%;
