@@ -149,11 +149,11 @@ const Time = () => {
           />
         </div>
 
-        <div className="globe-container">
+       
           <button className="globe-button" onClick={globeClickHandler}>
             <BsGlobeAsiaAustralia size="3em" />
           </button>
-        </div>
+       
 
         <div className="convert-result-container">
           <h3 className="from-location-text">Result: </h3>

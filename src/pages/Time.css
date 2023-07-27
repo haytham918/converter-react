@@ -9,7 +9,7 @@
 
 .time-container {
   width: 95%;
-  height: 75%;
+  height: 80%;
   border-radius: 0.5rem;
   background-color: rgb(209, 252, 213);
   box-shadow: 0rem 0.2rem 0.8rem rgba(0, 0, 0, 0.12);
@@ -117,15 +117,12 @@
 }
 
 .globe-button {
+  width: 10%;
+  align-self: center;
   background: transparent;
   border: none;
 }
 
-.globe-container {
-  height: 3%;
-  align-self: center;
-  margin-top: 1rem;
-}
 
 .convert-result-container {
   height: 25%;

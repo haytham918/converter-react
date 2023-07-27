@@ -15,7 +15,7 @@
 
 .unit-container {
   width: 95%;
-  height: 75%;
+  height: 80%;
   border-radius: 0.5rem;
   background-color: powderblue;
   box-shadow: 0rem 0.2rem 0.8rem rgba(0, 0, 0, 0.12);
@@ -138,16 +138,28 @@
   box-shadow: 0.2rem -0.2rem grey;
 }
 
+         
 .convert-button {
-  width: 25%;
-  height: 30%;
-  background-color: #0056d2;
-  color: white;
-  border-color: aliceblue;
   font-size: 95%;
   font-weight: bold;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0.1rem 0.1rem black;
+  width: 25%;
+  height: 30%;
+  background-image: linear-gradient(to right, #1FA2FF 0%, #12D8FA  51%, #1FA2FF  100%);
+  margin: 10px;
+  padding: 2px 5px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;            
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
 }
+
+.convert-button:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
