@@ -138,20 +138,24 @@
   box-shadow: 0.2rem -0.2rem grey;
 }
 
-         
 .convert-button {
   font-size: 95%;
   font-weight: bold;
   width: 25%;
   height: 30%;
-  background-image: linear-gradient(to right, #1FA2FF 0%, #12D8FA  51%, #1FA2FF  100%);
+  background-image: linear-gradient(
+    to right,
+    #1fa2ff 0%,
+    #12d8fa 51%,
+    #1fa2ff 100%
+  );
   margin: 10px;
   padding: 2px 5px;
   text-align: center;
   text-transform: uppercase;
   transition: 0.5s;
   background-size: 200% auto;
-  color: white;            
+  color: white;
   box-shadow: 0 0 20px #eee;
   border-radius: 10px;
   display: block;
@@ -162,4 +166,3 @@
   color: #fff;
   text-decoration: none;
 }
-
